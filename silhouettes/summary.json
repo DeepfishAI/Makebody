@@ -1,0 +1,12 @@
+{
+  "generated_at": "2026-01-02 16:19:40",
+  "results": [
+    {
+      "gender": "female",
+      "total": 20,
+      "success": 20,
+      "failed": 0
+    }
+  ],
+  "images_generated": true
+}

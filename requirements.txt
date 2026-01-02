@@ -22,4 +22,7 @@ click>=8.0.0
 flask>=3.0.0
 flask-cors>=4.0.0
 
+# Image generation for training
+Pillow>=10.0.0
+
 
