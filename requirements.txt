@@ -1,0 +1,12 @@
+# Core dependencies
+trimesh>=4.0.0
+numpy>=1.24.0
+open3d>=0.18.0
+manifold3d>=2.3.0
+pymeshlab>=2023.12
+
+# Optional: automatic landmark detection
+# mediapipe>=0.10.0
+
+# CLI
+click>=8.0.0

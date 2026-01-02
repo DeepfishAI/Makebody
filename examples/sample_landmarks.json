@@ -1,0 +1,76 @@
+{
+    "male": {
+        "head_top": [
+            0,
+            180,
+            0
+        ],
+        "shoulder_left": [
+            -22,
+            152,
+            0
+        ],
+        "shoulder_right": [
+            22,
+            152,
+            0
+        ],
+        "hip_left": [
+            -15,
+            98,
+            0
+        ],
+        "hip_right": [
+            15,
+            98,
+            0
+        ],
+        "ankle_left": [
+            -10,
+            0,
+            0
+        ],
+        "ankle_right": [
+            10,
+            0,
+            0
+        ]
+    },
+    "female": {
+        "head_top": [
+            0,
+            165,
+            0
+        ],
+        "shoulder_left": [
+            -18,
+            140,
+            0
+        ],
+        "shoulder_right": [
+            18,
+            140,
+            0
+        ],
+        "hip_left": [
+            -17,
+            92,
+            0
+        ],
+        "hip_right": [
+            17,
+            92,
+            0
+        ],
+        "ankle_left": [
+            -8,
+            0,
+            0
+        ],
+        "ankle_right": [
+            8,
+            0,
+            0
+        ]
+    }
+}
