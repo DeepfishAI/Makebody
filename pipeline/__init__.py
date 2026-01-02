@@ -20,6 +20,12 @@ from .ansur import (
     compute_scale_factors,
 )
 
+# Height-band scaling
+from .height_scaler import scale_by_height_bands, scale_arms_separately
+
+# Interactive bone editing
+from .bone_editor import BoneEditor, interactive_bone_edit
+
 __all__ = [
     # Configuration
     'PipelineConfig',
@@ -51,5 +57,14 @@ __all__ = [
     'load_ansur_dataset',
     'find_closest_subject',
     'compute_scale_factors',
+    
+    # Height-band scaling
+    'scale_by_height_bands',
+    'scale_arms_separately',
+    
+    # Interactive editing
+    'BoneEditor',
+    'interactive_bone_edit',
 ]
+
 
