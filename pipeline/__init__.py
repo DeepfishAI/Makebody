@@ -33,6 +33,9 @@ from .makehuman_gen import (
     BodyGeneratorAPI,
 )
 
+# Dual-body export for CAD
+from .dual_export import export_dual_body_step, create_skeleton_mesh
+
 __all__ = [
     # Configuration
     'PipelineConfig',
@@ -77,6 +80,10 @@ __all__ = [
     'generate_body_from_measurements',
     'generate_body_from_ansur',
     'BodyGeneratorAPI',
+    
+    # Dual-body export
+    'export_dual_body_step',
+    'create_skeleton_mesh',
 ]
 
 
