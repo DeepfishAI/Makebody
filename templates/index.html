@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,27 +16,31 @@
             --accent-green: #3fb950;
             --accent-purple: #a371f7;
         }
-        
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: var(--bg-dark);
             color: var(--text);
             min-height: 100vh;
         }
-        
+
         .container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 2rem;
         }
-        
+
         header {
             text-align: center;
             margin-bottom: 3rem;
         }
-        
+
         h1 {
             font-size: 2.5rem;
             background: linear-gradient(135deg, var(--accent), var(--accent-purple));
@@ -43,16 +48,18 @@
             -webkit-text-fill-color: transparent;
             margin-bottom: 0.5rem;
         }
-        
-        .subtitle { color: var(--text-muted); }
-        
+
+        .subtitle {
+            color: var(--text-muted);
+        }
+
         .workflow {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
             gap: 1rem;
             margin-bottom: 2rem;
         }
-        
+
         .step {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -61,16 +68,16 @@
             text-align: center;
             position: relative;
         }
-        
+
         .step.active {
             border-color: var(--accent);
             box-shadow: 0 0 20px rgba(88, 166, 255, 0.2);
         }
-        
+
         .step.complete {
             border-color: var(--accent-green);
         }
-        
+
         .step-number {
             width: 32px;
             height: 32px;
@@ -82,16 +89,21 @@
             margin: 0 auto 0.5rem;
             font-weight: bold;
         }
-        
-        .step.active .step-number { background: var(--accent); }
-        .step.complete .step-number { background: var(--accent-green); }
-        
+
+        .step.active .step-number {
+            background: var(--accent);
+        }
+
+        .step.complete .step-number {
+            background: var(--accent-green);
+        }
+
         .main-grid {
             display: grid;
             grid-template-columns: 1fr 400px;
             gap: 2rem;
         }
-        
+
         .card {
             background: var(--bg-card);
             border: 1px solid var(--border);
@@ -99,18 +111,18 @@
             padding: 1.5rem;
             margin-bottom: 1.5rem;
         }
-        
+
         .card h3 {
             margin-bottom: 1rem;
             color: var(--accent);
         }
-        
+
         .gender-tabs {
             display: flex;
             gap: 0.5rem;
             margin-bottom: 1rem;
         }
-        
+
         .gender-tab {
             flex: 1;
             padding: 0.75rem;
@@ -121,19 +133,22 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
-        .gender-tab:hover { border-color: var(--accent); }
-        .gender-tab.active { 
+
+        .gender-tab:hover {
+            border-color: var(--accent);
+        }
+
+        .gender-tab.active {
             background: var(--accent);
             border-color: var(--accent);
             color: var(--bg-dark);
         }
-        
+
         .subject-list {
             max-height: 400px;
             overflow-y: auto;
         }
-        
+
         .subject-row {
             display: grid;
             grid-template-columns: 80px 1fr 80px;
@@ -143,13 +158,25 @@
             cursor: pointer;
             transition: background 0.2s;
         }
-        
-        .subject-row:hover { background: rgba(88, 166, 255, 0.1); }
-        .subject-row.selected { background: rgba(88, 166, 255, 0.2); }
-        
-        .subject-id { color: var(--accent); font-weight: bold; }
-        .subject-stats { color: var(--text-muted); font-size: 0.85rem; }
-        
+
+        .subject-row:hover {
+            background: rgba(88, 166, 255, 0.1);
+        }
+
+        .subject-row.selected {
+            background: rgba(88, 166, 255, 0.2);
+        }
+
+        .subject-id {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .subject-stats {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
         #skeleton-viewer {
             width: 100%;
             height: 400px;
@@ -158,28 +185,37 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         #skeleton-canvas {
             width: 100%;
             height: 100%;
         }
-        
+
         .bone-controls {
             display: grid;
             gap: 0.75rem;
         }
-        
+
         .bone-slider {
             display: grid;
             grid-template-columns: 80px 1fr 50px;
             gap: 0.5rem;
             align-items: center;
         }
-        
-        .bone-slider label { color: var(--text-muted); }
-        .bone-slider input[type="range"] { width: 100%; }
-        .bone-slider .value { text-align: right; color: var(--accent); }
-        
+
+        .bone-slider label {
+            color: var(--text-muted);
+        }
+
+        .bone-slider input[type="range"] {
+            width: 100%;
+        }
+
+        .bone-slider .value {
+            text-align: right;
+            color: var(--accent);
+        }
+
         .btn {
             padding: 0.75rem 1.5rem;
             border: none;
@@ -188,20 +224,22 @@
             font-weight: bold;
             transition: all 0.2s;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, var(--accent), var(--accent-purple));
             color: white;
         }
-        
-        .btn-primary:hover { transform: translateY(-2px); }
-        
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+        }
+
         .btn-lg {
             padding: 1rem 2rem;
             font-size: 1.1rem;
             width: 100%;
         }
-        
+
         .file-drop {
             border: 2px dashed var(--border);
             border-radius: 12px;
@@ -210,38 +248,48 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
-        .file-drop:hover { border-color: var(--accent); }
-        .file-drop.dragover { 
+
+        .file-drop:hover {
+            border-color: var(--accent);
+        }
+
+        .file-drop.dragover {
             border-color: var(--accent-green);
             background: rgba(63, 185, 80, 0.1);
         }
-        
+
         .measurements {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 0.5rem;
         }
-        
+
         .measurement {
             display: flex;
             justify-content: space-between;
             padding: 0.5rem;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             border-radius: 4px;
         }
-        
-        .measurement-label { color: var(--text-muted); }
-        .measurement-value { color: var(--accent); font-weight: bold; }
+
+        .measurement-label {
+            color: var(--text-muted);
+        }
+
+        .measurement-value {
+            color: var(--accent);
+            font-weight: bold;
+        }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header>
             <h1>🦴 Makebody</h1>
             <p class="subtitle">Prosthesis Body Generator</p>
         </header>
-        
+
         <!-- Workflow Steps -->
         <div class="workflow">
             <div class="step active" id="step-1">
@@ -265,25 +313,25 @@
                 <div>Export</div>
             </div>
         </div>
-        
+
         <div class="main-grid">
             <!-- Left: Subject Browser -->
             <div>
                 <div class="card">
                     <h3>📊 ANSUR Subject Browser</h3>
-                    
+
                     <div class="gender-tabs">
                         <button class="gender-tab active" data-gender="female">Female</button>
                         <button class="gender-tab" data-gender="male">Male</button>
                     </div>
-                    
+
                     <div class="subject-list" id="subject-list">
                         <p style="text-align: center; padding: 2rem; color: var(--text-muted);">
                             Loading subjects...
                         </p>
                     </div>
                 </div>
-                
+
                 <div class="card">
                     <h3>📁 Import Target Scan</h3>
                     <div class="file-drop" id="file-drop">
@@ -295,21 +343,21 @@
                     </div>
                 </div>
             </div>
-            
+
             <!-- Right: Preview & Controls -->
             <div>
                 <div class="card">
-                    <h3>🦴 Skeleton Preview</h3>
+                    <h3>👤 Body Silhouette</h3>
                     <div id="skeleton-viewer">
                         <canvas id="skeleton-canvas"></canvas>
                     </div>
                 </div>
-                
+
                 <div class="card" id="selected-info" style="display: none;">
                     <h3>📐 Selected Subject</h3>
                     <div id="subject-details"></div>
                 </div>
-                
+
                 <div class="card">
                     <h3>🎛️ Bone Adjustments</h3>
                     <div class="bone-controls">
@@ -335,131 +383,207 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <button class="btn btn-primary btn-lg" id="export-btn">
                     📦 Export Both Bodies
                 </button>
             </div>
         </div>
     </div>
-    
+
     <script>
         // State
         let selectedGender = 'female';
         let selectedSubject = null;
         let skeleton = null;
-        
+        let silhouette = null;
+
         // Load subjects
         async function loadSubjects(gender) {
             const resp = await fetch(`/api/subjects?gender=${gender}&limit=50`);
             const data = await resp.json();
-            
+
             const list = document.getElementById('subject-list');
             if (data.subjects.length === 0) {
                 list.innerHTML = '<p style="text-align: center; padding: 2rem; color: var(--text-muted);">No subjects found</p>';
                 return;
             }
-            
+
             list.innerHTML = data.subjects.map(s => `
                 <div class="subject-row" data-id="${s.id}">
                     <span class="subject-id">#${s.id}</span>
                     <span class="subject-stats">
-                        ${(s.stature/10).toFixed(1)}cm, ${s.weight_lbs}lbs, age ${s.age}
+                        ${(s.stature / 10).toFixed(1)}cm, ${s.weight_lbs}lbs, age ${s.age}
                     </span>
-                    <span>${(s.waist/10).toFixed(0)}cm waist</span>
+                    <span>${(s.waist / 10).toFixed(0)}cm waist</span>
                 </div>
             `).join('');
-            
+
             // Click handlers
             document.querySelectorAll('.subject-row').forEach(row => {
                 row.onclick = () => selectSubject(parseInt(row.dataset.id));
             });
         }
-        
+
         // Select subject
         async function selectSubject(id) {
             document.querySelectorAll('.subject-row').forEach(r => r.classList.remove('selected'));
             document.querySelector(`.subject-row[data-id="${id}"]`)?.classList.add('selected');
-            
+
+            // Load silhouette
+            const silResp = await fetch(`/api/silhouette/${id}?gender=${selectedGender}`);
+            silhouette = await silResp.json();
+
             // Load skeleton
             const resp = await fetch(`/api/skeleton/${id}?gender=${selectedGender}`);
             skeleton = await resp.json();
             selectedSubject = id;
-            
+
             // Load details
             const detailResp = await fetch(`/api/subject/${id}?gender=${selectedGender}`);
             const details = await detailResp.json();
-            
+
             document.getElementById('selected-info').style.display = 'block';
             document.getElementById('subject-details').innerHTML = `
                 <div class="measurements">
                     <div class="measurement">
                         <span class="measurement-label">Stature</span>
-                        <span class="measurement-value">${(details.stature/10).toFixed(1)} cm</span>
+                        <span class="measurement-value">${(details.stature / 10).toFixed(1)} cm</span>
                     </div>
                     <div class="measurement">
                         <span class="measurement-label">Femur</span>
-                        <span class="measurement-value">${(details.bones.femur/10).toFixed(1)} cm</span>
+                        <span class="measurement-value">${(details.bones.femur / 10).toFixed(1)} cm</span>
                     </div>
                     <div class="measurement">
                         <span class="measurement-label">Tibia</span>
-                        <span class="measurement-value">${(details.bones.tibia/10).toFixed(1)} cm</span>
+                        <span class="measurement-value">${(details.bones.tibia / 10).toFixed(1)} cm</span>
                     </div>
                     <div class="measurement">
                         <span class="measurement-label">Spine</span>
-                        <span class="measurement-value">${(details.bones.spine/10).toFixed(1)} cm</span>
+                        <span class="measurement-value">${(details.bones.spine / 10).toFixed(1)} cm</span>
                     </div>
                 </div>
             `;
-            
+
             // Update step
             document.getElementById('step-1').classList.add('complete');
             document.getElementById('step-1').classList.remove('active');
             document.getElementById('step-2').classList.add('active');
-            
-            drawSkeleton();
+
+            drawBody();
         }
-        
-        // Draw skeleton on canvas
-        function drawSkeleton() {
-            if (!skeleton) return;
-            
+
+        // Draw body silhouette on canvas
+        function drawBody() {
             const canvas = document.getElementById('skeleton-canvas');
             const ctx = canvas.getContext('2d');
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width;
             canvas.height = rect.height;
-            
+
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
+
+            // Draw silhouette if available
+            if (silhouette && silhouette.raw_points) {
+                drawSilhouette(ctx, canvas);
+            }
+
+            // Draw skeleton overlay if available
+            if (skeleton && skeleton.joints) {
+                drawSkeletonOverlay(ctx, canvas);
+            }
+        }
+
+        function drawSilhouette(ctx, canvas) {
+            const points = silhouette.raw_points; // [[height, half_width], ...]
+            if (!points || points.length === 0) return;
+
             // Find bounds
-            let minX = Infinity, maxX = -Infinity;
+            const maxHeight = Math.max(...points.map(p => p[0]));
+            const maxWidth = Math.max(...points.map(p => p[1])) * 2;
+
+            // Calculate scale
+            const padding = 30;
+            const availWidth = canvas.width - 2 * padding;
+            const availHeight = canvas.height - 2 * padding;
+            const scale = Math.min(availWidth / maxWidth, availHeight / maxHeight);
+
+            const centerX = canvas.width / 2;
+            const bottomY = canvas.height - padding;
+
+            // Sort points by height
+            const sorted = [...points].sort((a, b) => a[0] - b[0]);
+
+            // Create gradient for body fill
+            const gradient = ctx.createLinearGradient(0, bottomY, 0, bottomY - maxHeight * scale);
+            gradient.addColorStop(0, 'rgba(163, 113, 247, 0.3)');  // Purple at feet
+            gradient.addColorStop(0.5, 'rgba(88, 166, 255, 0.4)'); // Blue at waist
+            gradient.addColorStop(1, 'rgba(163, 113, 247, 0.3)');  // Purple at head
+
+            // Draw filled silhouette
+            ctx.beginPath();
+
+            // Left side (bottom to top)
+            const firstPt = sorted[0];
+            ctx.moveTo(centerX - firstPt[1] * scale, bottomY - firstPt[0] * scale);
+
+            for (const [height, halfWidth] of sorted) {
+                const x = centerX - halfWidth * scale;
+                const y = bottomY - height * scale;
+                ctx.lineTo(x, y);
+            }
+
+            // Right side (top to bottom)
+            for (let i = sorted.length - 1; i >= 0; i--) {
+                const [height, halfWidth] = sorted[i];
+                const x = centerX + halfWidth * scale;
+                const y = bottomY - height * scale;
+                ctx.lineTo(x, y);
+            }
+
+            ctx.closePath();
+            ctx.fillStyle = gradient;
+            ctx.fill();
+
+            // Draw outline
+            ctx.strokeStyle = 'rgba(88, 166, 255, 0.8)';
+            ctx.lineWidth = 2;
+            ctx.stroke();
+
+            // Draw measurement markers
+            ctx.fillStyle = '#8b949e';
+            ctx.font = '10px sans-serif';
+            ctx.textAlign = 'left';
+
+            // Height label
+            ctx.fillText(`${(maxHeight / 10).toFixed(0)} cm`, centerX + maxWidth * scale / 2 + 10, bottomY - maxHeight * scale + 15);
+        }
+
+        function drawSkeletonOverlay(ctx, canvas) {
+            if (!skeleton) return;
+
+            // Find bounds for skeleton
             let minZ = Infinity, maxZ = -Infinity;
-            
             for (const [name, pos] of Object.entries(skeleton.joints)) {
-                minX = Math.min(minX, pos[0]);
-                maxX = Math.max(maxX, pos[0]);
                 minZ = Math.min(minZ, pos[2]);
                 maxZ = Math.max(maxZ, pos[2]);
             }
-            
-            const scale = Math.min(
-                (canvas.width - 100) / (maxX - minX),
-                (canvas.height - 100) / (maxZ - minZ)
-            );
-            const offsetX = canvas.width / 2;
-            const offsetZ = canvas.height - 50;
-            
+
+            const padding = 30;
+            const scale = (canvas.height - 2 * padding) / (maxZ - minZ);
+            const centerX = canvas.width / 2;
+            const bottomY = canvas.height - padding;
+
             function toScreen(pos) {
                 return [
-                    offsetX + pos[0] * scale * 0.5,
-                    offsetZ - pos[2] * scale * 0.25
+                    centerX + pos[0] * scale * 0.4,
+                    bottomY - (pos[2] - minZ) * scale
                 ];
             }
-            
-            // Draw bones
-            ctx.strokeStyle = '#58a6ff';
-            ctx.lineWidth = 4;
+
+            // Draw bones as thin lines
+            ctx.strokeStyle = 'rgba(63, 185, 80, 0.6)';
+            ctx.lineWidth = 2;
             for (const [a, b] of skeleton.bones) {
                 if (skeleton.joints[a] && skeleton.joints[b]) {
                     const pa = toScreen(skeleton.joints[a]);
@@ -470,17 +594,17 @@
                     ctx.stroke();
                 }
             }
-            
-            // Draw joints
+
+            // Draw joints as small dots
             ctx.fillStyle = '#3fb950';
             for (const [name, pos] of Object.entries(skeleton.joints)) {
                 const p = toScreen(pos);
                 ctx.beginPath();
-                ctx.arc(p[0], p[1], 8, 0, Math.PI * 2);
+                ctx.arc(p[0], p[1], 4, 0, Math.PI * 2);
                 ctx.fill();
             }
         }
-        
+
         // Gender tabs
         document.querySelectorAll('.gender-tab').forEach(tab => {
             tab.onclick = () => {
@@ -490,18 +614,18 @@
                 loadSubjects(selectedGender);
             };
         });
-        
+
         // Bone sliders
         document.querySelectorAll('.bone-slider input').forEach(slider => {
             slider.oninput = () => {
                 slider.nextElementSibling.textContent = parseFloat(slider.value).toFixed(2) + 'x';
             };
         });
-        
+
         // File drop
         const fileDrop = document.getElementById('file-drop');
         const fileInput = document.getElementById('file-input');
-        
+
         fileDrop.onclick = () => fileInput.click();
         fileDrop.ondragover = e => { e.preventDefault(); fileDrop.classList.add('dragover'); };
         fileDrop.ondragleave = () => fileDrop.classList.remove('dragover');
@@ -511,7 +635,7 @@
             handleFile(e.dataTransfer.files[0]);
         };
         fileInput.onchange = () => handleFile(fileInput.files[0]);
-        
+
         function handleFile(file) {
             if (file) {
                 fileDrop.innerHTML = `<p>✅ ${file.name}</p>`;
@@ -520,21 +644,21 @@
                 document.getElementById('step-3').classList.add('active');
             }
         }
-        
+
         // Export
         document.getElementById('export-btn').onclick = async () => {
             if (!selectedSubject) {
                 alert('Please select an ANSUR subject first');
                 return;
             }
-            
+
             const boneAdjustments = {
                 femur: parseFloat(document.getElementById('bone-femur').value),
                 tibia: parseFloat(document.getElementById('bone-tibia').value),
                 spine: parseFloat(document.getElementById('bone-spine').value),
                 humerus: parseFloat(document.getElementById('bone-humerus').value),
             };
-            
+
             const resp = await fetch('/api/generate', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -544,18 +668,19 @@
                     bone_adjustments: boneAdjustments,
                 }),
             });
-            
+
             const data = await resp.json();
             if (data.success) {
                 window.location.href = data.download_url;
             }
         };
-        
+
         // Init
         loadSubjects('female');
-        
+
         // Resize handler
-        window.onresize = drawSkeleton;
+        window.onresize = drawBody;
     </script>
 </body>
+
 </html>

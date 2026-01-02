@@ -160,6 +160,31 @@ def get_skeleton(subject_id: int):
     })
 
 
+@app.route('/api/silhouette/<int:subject_id>')
+def get_silhouette(subject_id: int):
+    """Get 2D body silhouette from measurements."""
+    gender = request.args.get('gender', 'female')
+    df = get_dataset(gender)
+    
+    if df.empty:
+        return jsonify({'error': 'Dataset not found'}), 404
+    
+    row = df[df['subjectid'] == subject_id]
+    if row.empty:
+        return jsonify({'error': 'Subject not found'}), 404
+    
+    subject = row_to_subject(row.iloc[0])
+    
+    # Generate silhouette from measurements
+    from pipeline.silhouette import generate_silhouette_json
+    silhouette_data = generate_silhouette_json(subject)
+    
+    return jsonify({
+        'subject_id': subject_id,
+        **silhouette_data,
+    })
+
+
 @app.route('/api/generate', methods=['POST'])
 def generate_bodies():
     """Generate bodies and export."""
