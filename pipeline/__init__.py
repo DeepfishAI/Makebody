@@ -26,6 +26,13 @@ from .height_scaler import scale_by_height_bands, scale_arms_separately
 # Interactive bone editing
 from .bone_editor import BoneEditor, interactive_bone_edit
 
+# Body generation (MakeHuman integration)
+from .makehuman_gen import (
+    generate_body_from_measurements,
+    generate_body_from_ansur,
+    BodyGeneratorAPI,
+)
+
 __all__ = [
     # Configuration
     'PipelineConfig',
@@ -65,6 +72,11 @@ __all__ = [
     # Interactive editing
     'BoneEditor',
     'interactive_bone_edit',
+    
+    # Body generation
+    'generate_body_from_measurements',
+    'generate_body_from_ansur',
+    'BodyGeneratorAPI',
 ]
 
 
