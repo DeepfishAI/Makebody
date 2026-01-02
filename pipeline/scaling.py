@@ -82,3 +82,107 @@ def compute_volume_ratio(mesh1: trimesh.Trimesh, mesh2: trimesh.Trimesh) -> floa
         bb1 = mesh1.bounding_box.volume
         bb2 = mesh2.bounding_box.volume
         return bb1 / bb2
+
+
+def scale_to_frame_segmented(
+    source_mesh: trimesh.Trimesh,
+    source_bones: 'BoneLengths',
+    target_bones: 'BoneLengths',
+    landmarks: dict = None,
+) -> trimesh.Trimesh:
+    """
+    Scale mesh segment-by-segment to match target skeleton.
+    
+    Uses bone length ratios to scale different body segments independently.
+    This preserves proportions better than uniform scaling when body
+    proportions differ significantly.
+    
+    Args:
+        source_mesh: Mesh to scale (e.g., ANSUR-generated female body)
+        source_bones: Bone lengths of source body (from ANSUR)
+        target_bones: Bone lengths to match (from 3D scan landmarks)
+        landmarks: Optional landmarks for segment boundary detection
+        
+    Returns:
+        Scaled copy of source mesh
+    """
+    from .ansur import BoneLengths
+    
+    # Compute per-segment scale factors
+    scale_factors = source_bones.scale_factors_to(target_bones)
+    
+    print("Segmented scaling:")
+    for bone, factor in scale_factors.items():
+        print(f"  {bone}: x{factor:.3f}")
+    
+    # For now, use weighted average scale factor
+    # Full implementation would deform mesh per-segment
+    avg_scale = np.mean([
+        scale_factors['femur'],
+        scale_factors['tibia'],
+        scale_factors['humerus'],
+        scale_factors['forearm'],
+        scale_factors['spine'],
+    ])
+    
+    print(f"  Average scale factor: {avg_scale:.3f}")
+    
+    # Create scaled copy
+    scaled = source_mesh.copy()
+    
+    # Scale around center of mass
+    centroid = scaled.centroid
+    scaled.vertices -= centroid
+    scaled.vertices *= avg_scale
+    scaled.vertices += centroid
+    
+    # TODO: Implement true segmented scaling with mesh deformation
+    # This would require:
+    # 1. Segment the mesh by body part (legs, torso, arms)
+    # 2. Scale each segment independently
+    # 3. Blend at segment boundaries
+    
+    return scaled
+
+
+def scale_by_height_ratio(
+    source_mesh: trimesh.Trimesh,
+    source_height: float,
+    target_height: float,
+) -> trimesh.Trimesh:
+    """
+    Simple uniform scaling based on height ratio.
+    
+    Args:
+        source_mesh: Mesh to scale
+        source_height: Height of source in mesh units
+        target_height: Height to match
+        
+    Returns:
+        Scaled mesh
+    """
+    scale_factor = target_height / source_height
+    
+    print(f"Height-based scaling: {source_height:.1f} -> {target_height:.1f} (x{scale_factor:.3f})")
+    
+    scaled = source_mesh.copy()
+    
+    # Scale around bottom center (feet stay grounded)
+    bounds = scaled.bounds
+    bottom_center = np.array([
+        (bounds[0, 0] + bounds[1, 0]) / 2,
+        (bounds[0, 1] + bounds[1, 1]) / 2,
+        bounds[0, 2],  # Bottom Z
+    ])
+    
+    scaled.vertices -= bottom_center
+    scaled.vertices *= scale_factor
+    scaled.vertices += bottom_center
+    
+    return scaled
+
+
+# Type hints
+from typing import TYPE_CHECKING
+if TYPE_CHECKING:
+    from .ansur import BoneLengths

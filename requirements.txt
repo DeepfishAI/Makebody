@@ -5,8 +5,16 @@ open3d>=0.18.0
 manifold3d>=2.3.0
 pymeshlab>=2023.12
 
+# ANSUR data handling
+pandas>=2.0.0
+
+# Voxel operations
+scikit-image>=0.21.0
+scipy>=1.11.0
+
 # Optional: automatic landmark detection
 # mediapipe>=0.10.0
 
 # CLI
 click>=8.0.0
+
