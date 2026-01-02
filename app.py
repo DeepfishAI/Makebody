@@ -162,7 +162,7 @@ def get_skeleton(subject_id: int):
 
 @app.route('/api/silhouette/<int:subject_id>')
 def get_silhouette(subject_id: int):
-    """Get 2D body silhouette from measurements."""
+    """Get 2D body silhouette from measurements using SMPL-based body model."""
     gender = request.args.get('gender', 'female')
     df = get_dataset(gender)
     
@@ -175,9 +175,15 @@ def get_silhouette(subject_id: int):
     
     subject = row_to_subject(row.iloc[0])
     
-    # Generate silhouette from measurements
-    from pipeline.silhouette import generate_silhouette_json
-    silhouette_data = generate_silhouette_json(subject)
+    # Try SMPL-based silhouette first (more realistic)
+    try:
+        from pipeline.smpl_silhouette import generate_silhouette_from_subject
+        silhouette_data = generate_silhouette_from_subject(subject)
+    except Exception as e:
+        # Fall back to simple method
+        print(f"SMPL silhouette failed, using fallback: {e}")
+        from pipeline.silhouette import generate_silhouette_json
+        silhouette_data = generate_silhouette_json(subject)
     
     return jsonify({
         'subject_id': subject_id,
