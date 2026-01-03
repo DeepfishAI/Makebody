@@ -153,7 +153,15 @@ def load_ansur_dataset(csv_path: Path) -> pd.DataFrame:
     if not csv_path.exists():
         raise FileNotFoundError(f"ANSUR data file not found: {csv_path}")
     
-    df = pd.read_csv(csv_path)
+    # Try different encodings
+    for encoding in ['utf-8', 'latin-1', 'cp1252']:
+        try:
+            df = pd.read_csv(csv_path, encoding=encoding)
+            break
+        except UnicodeDecodeError:
+            continue
+    else:
+        raise ValueError(f"Could not read {csv_path} with any known encoding")
     
     # Normalize column names to lowercase
     df.columns = df.columns.str.lower().str.strip()
